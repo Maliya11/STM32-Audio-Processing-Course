@@ -1,0 +1,14 @@
+14:21:23 **** Incremental Build of configuration Debug for project 12_pdm_audio_processing ****
+make -j8 all 
+arm-none-eabi-gcc "../Src/audio_processor.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F746VGTx -DSTM32F7 -DSTM32F746xx -DUSE_HAL_DRIVER -c -I../Inc -I"C:/Users/ACER/Documents/GitHub/Firmware-design/stm32_project/12_pdm_audio_processing/Inc" -I"C:/Users/ACER/Documents/GitHub/Firmware-design/stm32_project/12_pdm_audio_processing/Middlewares/ST/STM32_Audio/Addons/PDM/Inc" -I"C:/Users/ACER/Documents/GitHub/Firmware-design/stm32_project/12_pdm_audio_processing/Drivers/CMSIS/Device/ST/STM32F7xx/Include" -I"C:/Users/ACER/Documents/GitHub/Firmware-design/stm32_project/12_pdm_audio_processing/Drivers/STM32F7xx_HAL_Driver/Inc" -I"C:/Users/ACER/Documents/GitHub/Firmware-design/stm32_project/12_pdm_audio_processing/Drivers/CMSIS/Include" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/audio_processor.d" -MT"Src/audio_processor.o" --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -o "Src/audio_processor.o"
+arm-none-eabi-gcc -o "12_pdm_audio_processing.elf" @"objects.list"  -lPDMFilter_CM7_GCC_wc32 -mcpu=cortex-m7 -T"C:\Users\ACER\Documents\GitHub\Firmware-design\stm32_project\12_pdm_audio_processing\STM32F746VGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="12_pdm_audio_processing.map" -Wl,--gc-sections -static -L"C:/Users/ACER/Documents/GitHub/Firmware-design/stm32_project/12_pdm_audio_processing\Middlewares\ST\STM32_Audio\Addons\PDM\Lib" --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: 12_pdm_audio_processing.elf
+ 
+arm-none-eabi-size  12_pdm_audio_processing.elf 
+arm-none-eabi-objdump -h -S 12_pdm_audio_processing.elf  > "12_pdm_audio_processing.list"
+   text	   data	    bss	    dec	    hex	filename
+    856	      8	   1568	   2432	    980	12_pdm_audio_processing.elf
+Finished building: default.size.stdout
+ 
+Finished building: 12_pdm_audio_processing.list
+ 

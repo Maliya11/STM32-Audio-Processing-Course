@@ -1,0 +1,20 @@
+17:52:32 **** Incremental Build of configuration Debug for project 1_systick_fpu ****
+make -j8 all 
+arm-none-eabi-gcc "../Src/fpu.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F746VGTx -DSTM32F7 -DSTM32F746xx -c -I../Inc -I"..//chip_headers/CMSIS/Include" -I"..//chip_headers/CMSIS/Device/ST/STM32F7xx/Include" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/fpu.d" -MT"Src/fpu.o" --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -o "Src/fpu.o"
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F746VGTx -DSTM32F7 -DSTM32F746xx -c -I../Inc -I"..//chip_headers/CMSIS/Include" -I"..//chip_headers/CMSIS/Device/ST/STM32F7xx/Include" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -o "Src/main.o"
+arm-none-eabi-gcc "../Src/syscalls.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F746VGTx -DSTM32F7 -DSTM32F746xx -c -I../Inc -I"..//chip_headers/CMSIS/Include" -I"..//chip_headers/CMSIS/Device/ST/STM32F7xx/Include" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/syscalls.d" -MT"Src/syscalls.o" --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -o "Src/syscalls.o"
+arm-none-eabi-gcc "../Src/sysmem.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F746VGTx -DSTM32F7 -DSTM32F746xx -c -I../Inc -I"..//chip_headers/CMSIS/Include" -I"..//chip_headers/CMSIS/Device/ST/STM32F7xx/Include" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/sysmem.d" -MT"Src/sysmem.o" --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -o "Src/sysmem.o"
+arm-none-eabi-gcc -o "1_systick_fpu.elf" @"objects.list"   -mcpu=cortex-m7 -T"D:\FYP\Firmware\stm32_project\1_systick_fpu\STM32F746VGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="1_systick_fpu.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: 1_systick_fpu.elf
+ 
+arm-none-eabi-size  1_systick_fpu.elf 
+arm-none-eabi-objdump -h -S 1_systick_fpu.elf  > "1_systick_fpu.list"
+   text	   data	    bss	    dec	    hex	filename
+    796	      8	   1568	   2372	    944	1_systick_fpu.elf
+Finished building: default.size.stdout
+ 
+Finished building: 1_systick_fpu.list
+ 
+
+17:52:33 Build Finished. 0 errors, 0 warnings. (took 1s.127ms)
+

@@ -1,0 +1,6 @@
+1724675997247	Rename resource '1_systick_fpu'
+1724687095791	Delete resource '2_system_drivers_uart/Debug'
+1724689989222	Delete resource '3_system_drivers_timerbase/Debug'
+1724693220839	Delete resource '4_system_drivers_gpio/Debug'
+1724693257467	Delete resource '4_system_drivers_gpio/Src/gpio.c'
+1724694517112	Delete resource '5_system_drivers_adc/Debug'

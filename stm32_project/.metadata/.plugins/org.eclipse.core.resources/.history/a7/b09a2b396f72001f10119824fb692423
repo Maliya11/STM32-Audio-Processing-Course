@@ -1,0 +1,7 @@
+#ifndef AUDIO_PROCESSOR_H_
+#define AUDIO_PROCESSOR_H_
+
+extern I2S_HandleTypeDef hi2s1;
+extern I2S_HandleTypeDef hi2s2;
+
+#endif /* AUDIO_PROCESSOR_H_ */

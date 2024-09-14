@@ -1,0 +1,10 @@
+21:59:34 **** Build of configuration Debug for project 2_system_drivers_uart ****
+make -j8 all 
+arm-none-eabi-size  2_system_drivers_uart.elf 
+   text	   data	    bss	    dec	    hex	filename
+   5304	    100	   1900	   7304	   1c88	2_system_drivers_uart.elf
+Finished building: default.size.stdout
+ 
+
+21:59:34 Build Finished. 0 errors, 0 warnings. (took 563ms)
+

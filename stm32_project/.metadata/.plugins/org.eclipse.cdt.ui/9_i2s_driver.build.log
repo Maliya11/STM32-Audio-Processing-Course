@@ -1,0 +1,17 @@
+23:38:24 **** Incremental Build of configuration Debug for project 9_i2s_driver ****
+make -j8 all 
+arm-none-eabi-gcc "../Src/uart.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F746VGTx -DSTM32F7 -DSTM32F746xx -c -I../Inc -I"..//chip_headers/CMSIS/Include" -I"..//chip_headers/CMSIS/Device/ST/STM32F7xx/Include" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/uart.d" -MT"Src/uart.o" --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -o "Src/uart.o"
+arm-none-eabi-gcc -o "9_i2s_driver.elf" @"objects.list"   -mcpu=cortex-m7 -T"D:\FYP\Firmware\stm32_project\9_i2s_driver\STM32F746VGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="9_i2s_driver.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: 9_i2s_driver.elf
+ 
+arm-none-eabi-size  9_i2s_driver.elf 
+arm-none-eabi-objdump -h -S 9_i2s_driver.elf  > "9_i2s_driver.list"
+   text	   data	    bss	    dec	    hex	filename
+   2108	     20	   1572	   3700	    e74	9_i2s_driver.elf
+Finished building: default.size.stdout
+ 
+Finished building: 9_i2s_driver.list
+ 
+
+23:38:24 Build Finished. 0 errors, 0 warnings. (took 747ms)
+

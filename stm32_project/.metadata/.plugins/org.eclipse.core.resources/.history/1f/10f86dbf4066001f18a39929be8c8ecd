@@ -1,0 +1,87 @@
+#include "spi.h"
+
+#define GPIOAEN   (1U<<0)
+#define SPI1EN    (1U<<12)
+
+void spi1_gpio_init(void)
+{
+	/*Enable clock access to GPIOA*/
+	RCC->AHB1ENR |= GPIOAEN;
+
+	/*Set PA5, PA6, PA7 mode to alternate function mode*/
+	/*PA5*/
+	GPIOA->MODER &= ~(1U<<10);
+	GPIOA->MODER |= (1U<<11);
+
+	/*PA6*/
+	GPIOA->MODER &= ~(1U<<12);
+	GPIOA->MODER |= (1U<<13);
+
+	/*PA7*/
+	GPIOA->MODER &= ~(1U<<14);
+	GPIOA->MODER |= (1U<<15);
+
+	/*Set PA5, PA6, PA7 alternate function type to SPI1*/
+	/*PA5*/
+	GPIOA->AFR[0] |= (1U<<20);
+	GPIOA->AFR[0] &= ~(1U<<21);
+	GPIOA->AFR[0] |= (1U<<22);
+	GPIOA->AFR[0] &= ~(1U<<23);
+
+	/*PA6*/
+	GPIOA->AFR[0] |= (1U<<24);
+	GPIOA->AFR[0] &= ~(1U<<25);
+	GPIOA->AFR[0] |= (1U<<26);
+	GPIOA->AFR[0] &= ~(1U<<27);
+
+	/*PA7*/
+	GPIOA->AFR[0] |= (1U<<28);
+	GPIOA->AFR[0] &= ~(1U<<29);
+	GPIOA->AFR[0] |= (1U<<30);
+	GPIOA->AFR[0] &= ~(1U<<21);
+
+	/*Enable clock access for the SPI1*/
+	RCC->APB2ENR |= SPI1EN;
+}
+
+StatusTypeDef spi_init(SPI_HandleTypeDef *hspi)
+{
+	/*Check SPI handle allocation*/
+	if(hspi == NULL)
+	{
+		return DEV_ERROR;
+	}
+
+	/*Disable CRC calculation*/
+	hspi->Init.CRCCalculation = SPI_CRCCALCULATION_DISABLE;
+
+	if(hspi->State == SPI_STATE_RESET)
+	{
+		spi1_gpio_init();
+	}
+
+	hspi->State = SPI_STATE_BUSY;
+
+	/*Disable the SPI peripheral before configuring*/
+	CLEAR_BIT(hspi->Instance->CR1,SPI1_CR1_SPE);
+
+	/*Configuring the CR1 register*/
+	WRITE_REG(hspi->Instance->CR1, ((hspi->Init.Mode & (SPI_CR1_MSTR | SPI_CR1_SSI)) |
+			(hspi->Init.Direction & (SPI_CR1_RXONLY | SPI_CR1_BIDIMODE)) |
+			(hspi->Init.DataSize & SPI_CR1_CRCL) |
+			(hspi->Init.CLKPolarity & SPI1_CR1_CPOL) |
+			(hspi->Init.CLKPhase & SPI_CR1_CPHA) |
+			(hspi->Init.NSS & SPI_CR1_SSM) |
+			(hspi->Init.BaudRatePrescalar & SPI_CR1_BR_Msk) |
+			(hspi->Init.FirstBit & SPI_CR1_LSBFIRST) |
+			(hspi->Init.CRCCalculation & SPI_CR1_CRCEN)));
+
+	/*Configure the CR2 register*/
+	WRITE_REG(hspi->Instance->CR2, (((hspi->Init.NSS >> 16U) & SPI_CR2_SSDE)|(hspi->Init.TIMode & SPI_CR2_FRF)));
+
+	hspi->ErrorCode = SPI_ERROR_NONE;
+	hspi->State = SPI_STATE_READY;
+	return DEV_OK;
+}
+
+

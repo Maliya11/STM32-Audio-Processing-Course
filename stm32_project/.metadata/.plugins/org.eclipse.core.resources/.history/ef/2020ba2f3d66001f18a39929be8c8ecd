@@ -1,0 +1,72 @@
+#include "spi.h"
+
+#define GPIOAEN   (1U<<0)
+#define SPI1EN    (1U<<12)
+
+void spi1_gpio_init(void)
+{
+	/*Enable clock access to GPIOA*/
+	RCC->AHB1ENR |= GPIOAEN;
+
+	/*Set PA5, PA6, PA7 mode to alternate function mode*/
+	/*PA5*/
+	GPIOA->MODER &= ~(1U<<10);
+	GPIOA->MODER |= (1U<<11);
+
+	/*PA6*/
+	GPIOA->MODER &= ~(1U<<12);
+	GPIOA->MODER |= (1U<<13);
+
+	/*PA7*/
+	GPIOA->MODER &= ~(1U<<14);
+	GPIOA->MODER |= (1U<<15);
+
+	/*Set PA5, PA6, PA7 alternate function type to SPI1*/
+	/*PA5*/
+	GPIOA->AFR[0] |= (1U<<20);
+	GPIOA->AFR[0] &= ~(1U<<21);
+	GPIOA->AFR[0] |= (1U<<22);
+	GPIOA->AFR[0] &= ~(1U<<23);
+
+	/*PA6*/
+	GPIOA->AFR[0] |= (1U<<24);
+	GPIOA->AFR[0] &= ~(1U<<25);
+	GPIOA->AFR[0] |= (1U<<26);
+	GPIOA->AFR[0] &= ~(1U<<27);
+
+	/*PA7*/
+	GPIOA->AFR[0] |= (1U<<28);
+	GPIOA->AFR[0] &= ~(1U<<29);
+	GPIOA->AFR[0] |= (1U<<30);
+	GPIOA->AFR[0] &= ~(1U<<21);
+
+	/*Enable clock access for the SPI1*/
+	RCC->APB2ENR |= SPI1EN;
+}
+
+StatusTypeDef spi_init(SPI_HandleTypeDef *hspi)
+{
+	/*Check SPI handle allocation*/
+	if(hspi == NULL)
+	{
+		return DEV_ERROR;
+	}
+
+	/*Disable CRC calculation*/
+	hspi->Init.CRCCalculation = SPI_CRCCALCULATION_DISABLE;
+
+	if(hspi->State == SPI_STATE_RESET)
+	{
+		spi1_gpio_init();
+	}
+
+	hspi->State = SPI_STATE_BUSY;
+
+	/*Disable the SPI peripheral before configuring*/
+	CLEAR_BIT(hspi->Instance->CR1,SPI1_CR1_SPE);
+
+
+
+}
+
+

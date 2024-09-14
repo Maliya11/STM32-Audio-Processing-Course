@@ -1,0 +1,17 @@
+23:59:33 **** Incremental Build of configuration Debug for project 5_system_drivers_adc ****
+make -j8 all 
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F746VGTx -DSTM32F7 -DSTM32F746xx -c -I../Inc -I"..//chip_headers/CMSIS/Include" -I"..//chip_headers/CMSIS/Device/ST/STM32F7xx/Include" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -o "Src/main.o"
+arm-none-eabi-gcc -o "5_system_drivers_adc.elf" @"objects.list"   -mcpu=cortex-m7 -T"D:\FYP\Firmware\stm32_project\5_system_drivers_adc\STM32F746VGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="5_system_drivers_adc.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: 5_system_drivers_adc.elf
+ 
+arm-none-eabi-size  5_system_drivers_adc.elf 
+arm-none-eabi-objdump -h -S 5_system_drivers_adc.elf  > "5_system_drivers_adc.list"
+   text	   data	    bss	    dec	    hex	filename
+   1460	      8	   1576	   3044	    be4	5_system_drivers_adc.elf
+Finished building: default.size.stdout
+ 
+Finished building: 5_system_drivers_adc.list
+ 
+
+23:59:34 Build Finished. 0 errors, 0 warnings. (took 1s.44ms)
+

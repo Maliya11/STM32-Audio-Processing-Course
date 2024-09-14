@@ -1,0 +1,18 @@
+#include "audio_processor.h"
+
+
+extern I2S_HandleTypeDef hi2s1;
+extern I2S_HandleTypeDef hi2s2;
+
+
+//Buffer sizes
+#define BUFFER_SIZE        128
+#define FIFO_SIZE          256
+
+
+//Buffers
+static uint16_t tx_buffer[BUFFER_SIZE];
+static uint16_t rx_buffer[BUFFER_SIZE];
+static uint16_t pcm_temp_buffer[BUFFER_SIZE];
+
+

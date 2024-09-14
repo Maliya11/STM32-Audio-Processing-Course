@@ -1,0 +1,9 @@
+../Src/audio_processor.c:28:6:i2s_tx_rx_dma_start	8	static
+../Src/audio_processor.c:36:6:fifo_write	16	static
+../Src/audio_processor.c:41:10:fifo_read	4	static
+../Src/audio_processor.c:46:6:process_tx_data	24	static
+../Src/audio_processor.c:89:6:process_rx_data	16	static
+../Src/audio_processor.c:139:6:HAL_I2S_TxHalfCpltCallback	16	static
+../Src/audio_processor.c:144:6:HAL_I2S_TxCpltCallback	16	static
+../Src/audio_processor.c:149:6:HAL_I2S_RxHalfCpltCallback	16	static
+../Src/audio_processor.c:154:6:HAL_I2S_RxCpltCallback	16	static

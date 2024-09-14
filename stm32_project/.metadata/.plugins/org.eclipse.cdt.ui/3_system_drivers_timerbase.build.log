@@ -1,0 +1,17 @@
+22:42:30 **** Incremental Build of configuration Debug for project 3_system_drivers_timerbase ****
+make -j8 all 
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F746VGTx -DSTM32F7 -DSTM32F746xx -c -I../Inc -I"..//chip_headers/CMSIS/Include" -I"..//chip_headers/CMSIS/Device/ST/STM32F7xx/Include" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -o "Src/main.o"
+arm-none-eabi-gcc -o "3_system_drivers_timerbase.elf" @"objects.list"   -mcpu=cortex-m7 -T"D:\FYP\Firmware\stm32_project\3_system_drivers_timerbase\STM32F746VGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="3_system_drivers_timerbase.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: 3_system_drivers_timerbase.elf
+ 
+arm-none-eabi-size  3_system_drivers_timerbase.elf 
+arm-none-eabi-objdump -h -S 3_system_drivers_timerbase.elf  > "3_system_drivers_timerbase.list"
+   text	   data	    bss	    dec	    hex	filename
+   5496	    100	   1908	   7504	   1d50	3_system_drivers_timerbase.elf
+Finished building: default.size.stdout
+ 
+Finished building: 3_system_drivers_timerbase.list
+ 
+
+22:42:31 Build Finished. 0 errors, 0 warnings. (took 791ms)
+

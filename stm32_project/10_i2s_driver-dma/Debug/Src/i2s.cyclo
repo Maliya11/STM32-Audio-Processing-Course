@@ -1,0 +1,6 @@
+..//chip_headers/CMSIS/Include/core_cm7.h:1896:22:__NVIC_EnableIRQ	2
+../Src/i2s.c:10:6:i2s1_gpio_init	1
+../Src/i2s.c:59:6:i2s1_init	1
+../Src/i2s.c:84:6:i2s1_init_dma	1
+../Src/i2s.c:133:6:i2s1_send_data	5
+../Src/i2s.c:157:6:i2s1_send_data_dma	1

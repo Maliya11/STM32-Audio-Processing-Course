@@ -1,0 +1,25 @@
+#include "i2s.h"
+
+/* I2S1
+ * WS -> PA15
+ * CLK -> PB3
+ * SD -> PB5
+ * MCK -> PC4
+ * */
+
+void i2s1_init(void)
+{
+	__HAL_RCC_SPI1_CLK_ENABLE();
+	__HAL_RCC_GPIOA_CLK_ENABLE();
+	__HAL_RCC_GPIOB_CLK_ENABLE();
+	__HAL_RCC_GPIOC_CLK_ENABLE();
+
+	GPIO_InitTypeDef GPIO_InitStruct = {0};
+
+	GPIO_InitStruct.Pin = GPIO_PIN_15;
+	GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
+	GPIO_InitStruct.Pull = GPIO_NOPULL;
+	GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+	GPIO_InitStruct.Alternate = GPIO_AF5_SPI1;
+	HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+}
