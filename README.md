@@ -1,13 +1,13 @@
 # STM32 Audio processing framework
 
-## 📌 Overview
+## Overview
 A low-level, high-performance digital audio processing framework built entirely from scratch for the **ARM Cortex-M7 (STM32F746VG MCU)** platform. 
 
 > ⚠️ **No HAL layer is used.** All peripheral drivers are written via pure **bare-metal programming** using direct register manipulation.
 
 ---
 
-## 🏗️ Incremental Development Pipeline
+## Incremental Development Pipeline
 
 The repository is structured progressively, with each directory introducing a specific bare-metal layer or core audio optimization:
 
@@ -29,7 +29,7 @@ The repository is structured progressively, with each directory introducing a sp
 
 ---
 
-## 🛠️ Technical Specifications
+## Technical Specifications
 
 *   **Architecture:** Bare-metal C code targeting the ARM Cortex-M7 core.
 *   **Audio Core:** Circular DMA buffering, I2S data interface.
@@ -37,7 +37,7 @@ The repository is structured progressively, with each directory introducing a sp
 
 ---
 
-## 📚 Reference Documentation
+## Reference Documentation
 
 The official datasheets and programming guides used to extract register bitmasks are included in the root folder:
 *   `cortex_m7_user_guide.pdf` – Core pipeline and execution characteristics.
